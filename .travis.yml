@@ -1,5 +1,11 @@
 services:
-  - docker
-
+- docker
 script:
-  - docker build -t paulbailey/mstr-gradle .
+- docker build -t paulbailey/mstr-gradle:5.4.1 .
+env:
+  secure: eThH8uRiBUoBO68/eh1PkFLy+oxyFJgGuu7lykhvXtL/fM89IVcBbl2xmBE49gZDYt3iZHHGh2ABVDwOacL/9Ig4ibC+Leq05VZoleIFZ5okEvRu1pjNEw06Vk/tClrwUpcv900BI8SYsc5drrbJoD6vOVcJNPzomkqFQ00jlWW3Qw5FSk0tu2Pd2rkA2ARB/6s8E41o07bzuAPXiAUo9oBHhvygY0y7ZN0qNBXpkB1za3suU7QfTXz9HA24o8uKm+eswNL41getXMa6AQS23bZK5MLeYBE5UncHeSYqYRDBpuANB9L3T/CqT2WEj5uadBzLrTCf2mTX6BjbC/L6R+lBY2oAgM07nGd8kZrtRbMvOTdvwWhdIRNPZXfE8sZcduV0VODhiHGb9v4kDMBeKDw0S+tSrhvyf3Pso3U1mqX/2aTKD8shDrM9URqaR9OumItJLjyk0XXl8eIxlsgGD4vbO310EPJdB1m4jWjU9mSsV/nWw20+SMf2S0+ZO6TKVFfILBI/cIfX3J0OkGhlmK9/5XcW62Si8ZlLtHNwQnUlmKKcAhQgHOZuLb+SV9B3v3kqupsL5c8SlC1H0cYa0rONzbaG7bQQNbEwC2cXeNl9ox8BmHNwNwIa7230gz+/Kno2ugNl3Gtdg0Ni+ZpjEiQ8KsuSaFEziN3rCJUaD70=
+deploy:
+  provider: script
+  script: bash docker_push.sh
+  on:
+    branch: master
