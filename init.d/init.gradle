@@ -1,20 +1,3 @@
-apply plugin: MicroStrategyWebPluginPlugin
-
-class MicroStrategyWebPluginPlugin implements Plugin<Gradle> {
-  void apply(Gradle gradle) {
-    gradle.allprojects { Project project -> 
-      project.pluginManager.apply "maven-publish"
-      project.pluginManager.apply "war"
-      def plugin = project.extensions.create("plugin", MicroStrategyWebPluginExtension)
-      project.tasks.withType(War.class) { War w ->
-        w.archiveExtension.set("zip")
-        w.into { plugin.folder }
-      }
-      project.defaultTasks "war"
-    }
-  }
-}
-
-class MicroStrategyWebPluginExtension {
-  String folder
+plugins {
+  id "net.dreamshake.mstr-plugins" version "0.1.0"
 }
